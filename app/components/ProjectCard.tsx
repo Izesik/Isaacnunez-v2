@@ -21,9 +21,10 @@ export default function ProjectCard({
   url,
   github,
   status,
-}: Project) {
+  expanded = false,
+}: Project & { expanded?: boolean }) {
   return (
-    <li className="group relative overflow-hidden border border-zinc-100 dark:border-zinc-800 rounded-lg transition-shadow hover:shadow-md dark:hover:shadow-zinc-900">
+    <li className="group relative overflow-hidden border border-zinc-100 dark:border-zinc-800 rounded-lg transition-shadow hover:shadow-md dark:hover:shadow-zinc-900 h-full">
       {/* Background image */}
       {image && (
         <div className="absolute inset-0">
@@ -39,10 +40,10 @@ export default function ProjectCard({
       )}
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col gap-3 p-5">
+      <div className="relative z-10 flex flex-col gap-3 p-5 h-full">
         <div className="flex items-start justify-between gap-4">
           <div className="flex flex-col gap-1">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               <span className="text-sm font-semibold text-black dark:text-zinc-50">
                 {name}
               </span>
@@ -88,12 +89,20 @@ export default function ProjectCard({
           </div>
         </div>
 
-        {/* Expanded details — revealed on hover */}
-        <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out">
-          <div className="overflow-hidden">
-            <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 pt-2 border-t border-zinc-200 dark:border-zinc-700">
-              {details}
-            </p>
+        {/* Details — always visible when expanded, hover-reveal otherwise */}
+        <div className={expanded ? "" : "grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out"}>
+          <div className={expanded ? "" : "overflow-hidden"}>
+            <ul className="flex flex-col gap-1.5 pt-2 border-t border-zinc-200 dark:border-zinc-700">
+              {details.map((point, i) => (
+                <li
+                  key={i}
+                  className="flex gap-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400"
+                >
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400 dark:bg-zinc-500" />
+                  {point}
+                </li>
+              ))}
+            </ul>
             <div className="flex flex-wrap gap-2 pt-3">
               {tech.map((t) => (
                 <span

@@ -4,6 +4,7 @@ import SocialLinks from "./components/SocialLinks";
 import ProjectCard from "./components/ProjectCard";
 import ExperienceCard from "./components/ExperienceCard";
 import SideNav from "./components/SideNav";
+import EducationCard from "./components/EducationCard";
 import projects from "./data/projects";
 import experience from "./data/experience";
 
@@ -74,6 +75,7 @@ export default function Home() {
               </strong>
               .
             </p>
+            <EducationCard />
           </div>
 
           <div id="experience" className="flex flex-col gap-6">
@@ -115,6 +117,64 @@ export default function Home() {
             </Link>
           </div>
         </main>
+
+        <footer className="w-full max-w-3xl mx-auto px-16 py-8 text-xs font-medium text-zinc-500 dark:text-zinc-600 leading-relaxed">
+          Coded in{" "}
+          <a
+            href="https://code.visualstudio.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:text-blue-400 transition-colors"
+          >
+            Visual Studio Code
+          </a>{" "}
+          by the man himself, me. Built with{" "}
+          <a
+            href="https://nextjs.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:text-blue-400 transition-colors"
+          >
+            Next.js
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://react.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:text-blue-400 transition-colors"
+          >
+            React
+          </a>
+          , styled with{" "}
+          <a
+            href="https://tailwindcss.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:text-blue-400 transition-colors"
+          >
+            Tailwind CSS
+          </a>
+          , deployed on{" "}
+          <a
+            href="https://vercel.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:text-blue-400 transition-colors"
+          >
+            Vercel
+          </a>
+          . All text is set in the{" "}
+          <a
+            href="https://vercel.com/font/geist"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:text-blue-400 transition-colors"
+          >
+            Geist
+          </a>{" "}
+          typeface.
+        </footer>
       </div>
     </ViewTransition>
   );

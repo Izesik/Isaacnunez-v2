@@ -6,8 +6,8 @@ import projects from "../data/projects";
 export default function Projects() {
   return (
     <ViewTransition>
-      <div className="flex flex-col flex-1 items-center justify-center font-sans">
-        <main className="flex flex-1 w-full max-w-3xl flex-col gap-16 pt-16 pb-32 px-16 sm:items-start">
+      <div className="flex flex-col flex-1 items-center font-sans">
+        <main className="flex flex-1 w-full max-w-5xl flex-col gap-12 pt-16 pb-32 px-16">
           <Link
             href="/"
             className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 hover:text-zinc-200 transition-colors"
@@ -27,16 +27,24 @@ export default function Projects() {
             </svg>
             Back
           </Link>
-          <div id="projects" className="flex flex-col gap-6">
-            <h2 className="text-lg font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
-              Projects
-            </h2>
-            <ul className="flex flex-col gap-4">
-              {projects.map((project) => (
-                <ProjectCard key={project.name} {...project} />
-              ))}
-            </ul>
+
+          <div className="flex flex-col gap-2">
+            <h1 className="text-3xl font-semibold text-black dark:text-zinc-50">
+              Project Library
+            </h1>
+            <p className="text-base text-zinc-500 dark:text-zinc-400">
+              Everything I&apos;ve built — games, apps, tools, and experiments.{" "}
+              <span className="text-zinc-400 dark:text-zinc-600">
+                {projects.length} projects total.
+              </span>
+            </p>
           </div>
+
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
+            {projects.map((project) => (
+              <ProjectCard key={project.name} {...project} expanded />
+            ))}
+          </ul>
         </main>
       </div>
     </ViewTransition>
