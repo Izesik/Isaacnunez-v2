@@ -61,7 +61,7 @@ const projects: Project[] = [
     details:
       "This was the first iteration of my personal website where I showcased my projects, experience, and skills. It was built to experiment with React.js and Tailwind CSS while learning how to structure a portfolio site effectively.",
     tech: ["React.js", "Tailwind CSS"],
-    image: "/projects/PWV1.jpg",
+    image: "/projects/PersonalWebsiteCover.webp",
     url: "https://v1.isaacnunez.com",
     github: "https://github.com/IsaacN/personalwebsitev1",
     status: "Completed",
@@ -73,9 +73,21 @@ const projects: Project[] = [
     details:
       "Genshin Codes Discord Bot allows users in a Discord server to share active Genshin Impact redeemable codes and check which codes have already been claimed. It was built to practice working with Discord.js and integrating external APIs for real-time code tracking.",
     tech: ["Node.js", "Discord.js", "MongoDB"],
-    image: "/projects/GenshinCodes.jpg",
+    image: "/projects/GenshinCodes.png",
     url: "https://genshincodes.example.com",
     github: "https://github.com/IsaacN/genshincodes",
+    status: "Completed",
+  },
+  {
+    name: "C.H.A.I.R.S Demo",
+    description:
+      "A Unity project demo with the objective to showcase the potential concept of a survival horror experience with a unique twist.",
+    details:
+      "This project was a deep dive into game design, where I explored new ideas and concepts. I also got to grips with JSON, which expanded my skills and made me a more versatile game developer. This project was a big step in my game development journey, showing me new possibilities and pushing me to be more creative.",
+    tech: ["C#", "Unity", "JSON", "UI/UX"],
+    image: "/projects/Chairs.png",
+    url: "",
+    github: "",
     status: "Completed",
   },
   {
@@ -89,6 +101,18 @@ const projects: Project[] = [
     url: "",
     github: "https://github.com/IsaacN/eahsguidance",
     status: "Canceled",
+  },
+  {
+    name: "The Adventures of Jack",
+    description:
+      "A 2.5D Unity Platformer. This was the first time I had ever touched code and to this day I like to go back and recreate this game and add a little bit more, just to see how much I've improved.",
+    details:
+      "My very first programming project, a 2.5D platformer built in Unity. Starting from zero knowledge of code, I taught myself C# and Unity fundamentals to bring this game to life. It holds a special place as the project that started it all, and I revisit it periodically to rebuild it from scratch as a personal benchmark of how far I've come.",
+    tech: ["C#", "Unity"],
+    image: "/projects/TOAJ.png",
+    url: "https://gamejolt.com",
+    github: "",
+    status: "Completed",
   },
 ];
 
