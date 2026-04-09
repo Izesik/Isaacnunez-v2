@@ -31,10 +31,10 @@ export default function ProjectCard({
             src={image}
             alt=""
             fill
-            className="object-cover scale-105 blur-sm"
+            className="object-cover scale-105 blur-[2px]"
             aria-hidden
           />
-          <div className="absolute inset-0 bg-white/85 dark:bg-black/85" />
+          <div className="absolute inset-0 bg-white/70 dark:bg-black/70" />
         </div>
       )}
 
