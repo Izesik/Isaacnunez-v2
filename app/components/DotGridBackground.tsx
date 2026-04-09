@@ -14,12 +14,13 @@ export default function DotGridBackground() {
     if (!ctx) return;
 
     const COLS = 28;
-    const ROWS = 22;
-    const HORIZON_FRAC = 0.38;
+    const ROWS = 28;
+    const HORIZON_FRAC = 0.0;
     const MOUSE_RADIUS = 140;
     const MOUSE_STRENGTH = 36;
     const WAVE_SPEED = 0.55;
     const WAVE_AMP = 10;
+    const SCROLL_SPEED = 0.004; // depth cycles per second — dots flow toward the horizon
 
     let width = 0;
     let height = 0;
@@ -29,10 +30,9 @@ export default function DotGridBackground() {
       height = canvas.height = window.innerHeight;
     }
 
-    // Returns projected (x, y) and depth for a grid point
-    function project(col: number, row: number) {
-      // depth 0 = far (horizon), 1 = near (bottom of screen)
-      const depth = row / (ROWS - 1);
+    // Projects a column and animated depth value to screen coordinates.
+    // depth 0 = far (horizon), depth 1 = near (bottom of screen)
+    function project(col: number, depth: number) {
       const t = depth * depth; // ease so near rows spread out faster
 
       const horizonY = height * HORIZON_FRAC;
@@ -43,7 +43,7 @@ export default function DotGridBackground() {
       const halfSpread = width * 0.58 * t;
       const x = cx + ((col / (COLS - 1)) - 0.5) * 2 * halfSpread;
 
-      return { x, y, depth, t };
+      return { x, y, t };
     }
 
     let time = 0;
@@ -55,15 +55,26 @@ export default function DotGridBackground() {
       const mx = mouseRef.current.x;
       const my = mouseRef.current.y;
 
-      // Draw subtle grid lines between adjacent dots first (behind dots)
-      ctx.lineWidth = 0.4;
+      // Animate each row's depth: subtract scrollT so rows drift toward the horizon,
+      // wrapping back to near when they reach it (continuous loop).
+      const scrollT = (time * SCROLL_SPEED) % 1;
+      const rowEntries = Array.from({ length: ROWS }, (_, row) => {
+        const rawDepth = row / ROWS;
+        const depth = ((rawDepth - scrollT) % 1 + 1) % 1;
+        return { row, depth };
+      });
 
-      for (let row = 0; row < ROWS; row++) {
+      // Sort far→near so far rows draw first (painter's algorithm)
+      rowEntries.sort((a, b) => a.depth - b.depth);
+
+      // Pre-compute screen positions for all grid points
+      const positions: Array<Array<{ px: number; py: number; t: number }>> = [];
+      for (const { row, depth } of rowEntries) {
+        const rowPos: Array<{ px: number; py: number; t: number }> = [];
         for (let col = 0; col < COLS; col++) {
-          const { x: bx, y: by, t } = project(col, row);
+          const { x: bx, y: by, t } = project(col, depth);
           const wave = Math.sin(time * WAVE_SPEED + col * 0.35 + row * 0.55) * WAVE_AMP * t;
 
-          // Apply mouse repulsion
           const distX = bx - mx;
           const distY = (by + wave) - my;
           const dist = Math.sqrt(distX * distX + distY * distY);
@@ -74,21 +85,24 @@ export default function DotGridBackground() {
             px += (distX / dist) * force;
             py += (distY / dist) * force;
           }
+          rowPos.push({ px, py, t });
+        }
+        positions.push(rowPos);
+      }
+
+      // Draw grid lines (far→near)
+      ctx.lineWidth = 0.4;
+      for (let ri = 0; ri < rowEntries.length; ri++) {
+        const rowPos = positions[ri];
+        const { depth } = rowEntries[ri];
+        const t = depth * depth;
+
+        for (let col = 0; col < COLS; col++) {
+          const { px, py } = rowPos[col];
 
           // Horizontal line to right neighbor
           if (col < COLS - 1) {
-            const { x: rx, y: ry, t: rt } = project(col + 1, row);
-            const rwave = Math.sin(time * WAVE_SPEED + (col + 1) * 0.35 + row * 0.55) * WAVE_AMP * rt;
-            let rpx = rx;
-            let rpy = ry + rwave;
-            const rdistX = rx - mx;
-            const rdistY = rpy - my;
-            const rdist = Math.sqrt(rdistX * rdistX + rdistY * rdistY);
-            if (rdist < MOUSE_RADIUS && rdist > 0) {
-              const force = (1 - rdist / MOUSE_RADIUS) * MOUSE_STRENGTH * (0.3 + rt * 0.7);
-              rpx += (rdistX / rdist) * force;
-              rpy += (rdistY / rdist) * force;
-            }
+            const { px: rpx, py: rpy, t: rt } = rowPos[col + 1];
             const lineAlpha = (t + rt) / 2 * 0.12;
             ctx.strokeStyle = `rgba(255,255,255,${lineAlpha})`;
             ctx.beginPath();
@@ -97,41 +111,39 @@ export default function DotGridBackground() {
             ctx.stroke();
           }
 
-          // Vertical line to row below neighbor
-          if (row < ROWS - 1) {
-            const { x: dx, y: dy, t: dt } = project(col, row + 1);
-            const dwave = Math.sin(time * WAVE_SPEED + col * 0.35 + (row + 1) * 0.55) * WAVE_AMP * dt;
-            let dpx = dx;
-            let dpy = dy + dwave;
-            const ddistX = dx - mx;
-            const ddistY = dpy - my;
-            const ddist = Math.sqrt(ddistX * ddistX + ddistY * ddistY);
-            if (ddist < MOUSE_RADIUS && ddist > 0) {
-              const force = (1 - ddist / MOUSE_RADIUS) * MOUSE_STRENGTH * (0.3 + dt * 0.7);
-              dpx += (ddistX / ddist) * force;
-              dpy += (ddistY / ddist) * force;
+          // Vertical line to next-farther row
+          if (ri + 1 < rowEntries.length) {
+            const nextRowPos = positions[ri + 1];
+            const { depth: nextDepth } = rowEntries[ri + 1];
+            const dt = nextDepth * nextDepth;
+            // Skip the wrap-around connection (when depth jumps from ~0 back to ~1)
+            if (Math.abs(nextDepth - depth) < 0.25) {
+              const { px: dpx, py: dpy } = nextRowPos[col];
+              const lineAlpha = (t + dt) / 2 * 0.12;
+              ctx.strokeStyle = `rgba(255,255,255,${lineAlpha})`;
+              ctx.beginPath();
+              ctx.moveTo(px, py);
+              ctx.lineTo(dpx, dpy);
+              ctx.stroke();
             }
-            const lineAlpha = (t + dt) / 2 * 0.12;
-            ctx.strokeStyle = `rgba(255,255,255,${lineAlpha})`;
-            ctx.beginPath();
-            ctx.moveTo(px, py);
-            ctx.lineTo(dpx, dpy);
-            ctx.stroke();
           }
         }
       }
 
-      // Draw dots on top of lines
-      for (let row = 0; row < ROWS; row++) {
+      // Draw dots on top of lines (far→near)
+      for (let ri = 0; ri < rowEntries.length; ri++) {
+        const rowPos = positions[ri];
+        const { row, depth } = rowEntries[ri];
+
         for (let col = 0; col < COLS; col++) {
-          const { x: bx, y: by, t } = project(col, row);
+          const { t } = project(col, depth);
+          const { x: bx, y: by } = project(col, depth);
           const wave = Math.sin(time * WAVE_SPEED + col * 0.35 + row * 0.55) * WAVE_AMP * t;
 
           const distX = bx - mx;
           const distY = (by + wave) - my;
           const dist = Math.sqrt(distX * distX + distY * distY);
-          let px = bx;
-          let py = by + wave;
+          let { px, py } = rowPos[col];
           let brightBoost = 0;
 
           if (dist < MOUSE_RADIUS && dist > 0) {
