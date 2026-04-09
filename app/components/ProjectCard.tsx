@@ -1,6 +1,17 @@
 import Image from "next/image";
 import type { Project } from "../data/projects";
 
+function statusStyle(status: string): string {
+  if (/launch|upcoming/i.test(status))
+    return "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400";
+  if (/development|progress/i.test(status))
+    return "bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-400";
+  if (/cancel/i.test(status))
+    return "bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400";
+  // Completed / default
+  return "bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400";
+}
+
 export default function ProjectCard({
   name,
   description,
@@ -9,6 +20,7 @@ export default function ProjectCard({
   image,
   url,
   github,
+  status,
 }: Project) {
   return (
     <li className="group relative overflow-hidden border border-zinc-100 dark:border-zinc-800 rounded-lg transition-shadow hover:shadow-md dark:hover:shadow-zinc-900">
@@ -30,9 +42,16 @@ export default function ProjectCard({
       <div className="relative z-10 flex flex-col gap-3 p-5">
         <div className="flex items-start justify-between gap-4">
           <div className="flex flex-col gap-1">
-            <span className="text-sm font-semibold text-black dark:text-zinc-50">
-              {name}
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-semibold text-black dark:text-zinc-50">
+                {name}
+              </span>
+              {status && (
+                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${statusStyle(status)}`}>
+                  {status}
+                </span>
+              )}
+            </div>
             <p className="text-sm text-zinc-500 dark:text-zinc-400">
               {description}
             </p>
