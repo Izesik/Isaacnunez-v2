@@ -1,3 +1,4 @@
+import Link from "next/link";
 import SocialLinks from "./components/SocialLinks";
 import ProjectCard from "./components/ProjectCard";
 import ExperienceCard from "./components/ExperienceCard";
@@ -77,9 +78,15 @@ export default function Home() {
           </h2>
           <ul className="flex flex-col gap-4">
             {experience.map((entry) => (
-              <ExperienceCard key={`${entry.company}-${entry.role}`} {...entry} />
+              <ExperienceCard
+                key={`${entry.company}-${entry.role}`}
+                {...entry}
+              />
             ))}
           </ul>
+          <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+            View Full Resume
+          </h2>
         </div>
 
         <div id="projects" className="flex flex-col gap-6">
@@ -87,10 +94,16 @@ export default function Home() {
             Projects
           </h2>
           <ul className="flex flex-col gap-4">
-            {projects.map((project) => (
+            {projects.slice(0, 3).map((project) => (
               <ProjectCard key={project.name} {...project} />
             ))}
           </ul>
+          <Link
+            href="/Projects"
+            className="text-sm font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 hover:text-zinc-200 transition-colors"
+          >
+            View Project Library
+          </Link>
         </div>
       </main>
     </div>

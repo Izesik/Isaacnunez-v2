@@ -7,6 +7,7 @@ export type Project = {
   image?: string;
   url?: string;
   github?: string;
+  status?: string;
 };
 
 const projects: Project[] = [
@@ -20,6 +21,7 @@ const projects: Project[] = [
     image: "/projects/GC.png",
     url: "https://gamecache.example.com",
     github: "https://github.com/IsaacN/gamecache",
+    status: "Launching May 2026",
   },
   {
     name: "Marvel Trackr",
@@ -31,6 +33,7 @@ const projects: Project[] = [
     image: "/projects/MT.jpg",
     url: "https://marveltrackr.example.com",
     github: "https://github.com/IsaacN/marveltrackr",
+    status: "In Development",
   },
   {
     name: "LunaLog",
@@ -38,10 +41,18 @@ const projects: Project[] = [
       "A mobile mental wellness app with AI-driven therapy-style responses, built in 24 hours at a hackathon.",
     details:
       "Integrated Gemini AI via a Flask backend to deliver real-time, personalized psychological insights and conversational support based on user input. Absorbed full-stack responsibilities mid-sprint after the team halved from 4 to 2, delivering a complete MVP within the 24-hour window.",
-    tech: ["React Native", "Express.js", "SQLite", "Gemini API", "Flask", "Python"],
+    tech: [
+      "React Native",
+      "Express.js",
+      "SQLite",
+      "Gemini API",
+      "Flask",
+      "Python",
+    ],
     image: "/projects/LunaLog.png",
     url: "https://lunalog.example.com",
     github: "https://github.com/IsaacN/lunalog",
+    status: "Completed",
   },
   {
     name: "Personal Website V1",
@@ -53,6 +64,7 @@ const projects: Project[] = [
     image: "/projects/PWV1.jpg",
     url: "https://v1.isaacnunez.com",
     github: "https://github.com/IsaacN/personalwebsitev1",
+    status: "Completed",
   },
   {
     name: "Genshin Codes Discord Bot",
@@ -64,6 +76,19 @@ const projects: Project[] = [
     image: "/projects/GenshinCodes.jpg",
     url: "https://genshincodes.example.com",
     github: "https://github.com/IsaacN/genshincodes",
+    status: "Completed",
+  },
+  {
+    name: "EAHS Guidance Mobile App",
+    description:
+      "A mobile app designed to provide students with easy access to guidance resources and information.",
+    details:
+      "A mobile application for my High School senior project that allows students to schedule appointments and contact their guidance counselors at EAHS. I learned a lot about Front-end and Back-end connectivity and design in this project. Unfortunately due to the Pandemic, we never got to complete the project.",
+    tech: ["C#", "JavaScript", "HTML", "CSS"],
+    image: "/projects/EAHSGuidance.jpg",
+    url: "",
+    github: "https://github.com/IsaacN/eahsguidance",
+    status: "Canceled",
   },
 ];
 

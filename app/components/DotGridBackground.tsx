@@ -20,7 +20,7 @@ export default function DotGridBackground() {
     const MOUSE_STRENGTH = 36;
     const WAVE_SPEED = 0.55;
     const WAVE_AMP = 10;
-    const SCROLL_SPEED = 0.004; // depth cycles per second — dots flow toward the horizon
+    const SCROLL_SPEED = 0.006; // depth cycles per second — dots flow toward the horizon
 
     let width = 0;
     let height = 0;
@@ -41,7 +41,7 @@ export default function DotGridBackground() {
 
       const cx = width / 2;
       const halfSpread = width * 0.58 * t;
-      const x = cx + ((col / (COLS - 1)) - 0.5) * 2 * halfSpread;
+      const x = cx + (col / (COLS - 1) - 0.5) * 2 * halfSpread;
 
       return { x, y, t };
     }
@@ -60,7 +60,7 @@ export default function DotGridBackground() {
       const scrollT = (time * SCROLL_SPEED) % 1;
       const rowEntries = Array.from({ length: ROWS }, (_, row) => {
         const rawDepth = row / ROWS;
-        const depth = ((rawDepth - scrollT) % 1 + 1) % 1;
+        const depth = (((rawDepth - scrollT) % 1) + 1) % 1;
         return { row, depth };
       });
 
@@ -73,15 +73,19 @@ export default function DotGridBackground() {
         const rowPos: Array<{ px: number; py: number; t: number }> = [];
         for (let col = 0; col < COLS; col++) {
           const { x: bx, y: by, t } = project(col, depth);
-          const wave = Math.sin(time * WAVE_SPEED + col * 0.35 + row * 0.55) * WAVE_AMP * t;
+          const wave =
+            Math.sin(time * WAVE_SPEED + col * 0.35 + row * 0.55) *
+            WAVE_AMP *
+            t;
 
           const distX = bx - mx;
-          const distY = (by + wave) - my;
+          const distY = by + wave - my;
           const dist = Math.sqrt(distX * distX + distY * distY);
           let px = bx;
           let py = by + wave;
           if (dist < MOUSE_RADIUS && dist > 0) {
-            const force = (1 - dist / MOUSE_RADIUS) * MOUSE_STRENGTH * (0.3 + t * 0.7);
+            const force =
+              (1 - dist / MOUSE_RADIUS) * MOUSE_STRENGTH * (0.3 + t * 0.7);
             px += (distX / dist) * force;
             py += (distY / dist) * force;
           }
@@ -103,7 +107,7 @@ export default function DotGridBackground() {
           // Horizontal line to right neighbor
           if (col < COLS - 1) {
             const { px: rpx, py: rpy, t: rt } = rowPos[col + 1];
-            const lineAlpha = (t + rt) / 2 * 0.12;
+            const lineAlpha = ((t + rt) / 2) * 0.12;
             ctx.strokeStyle = `rgba(255,255,255,${lineAlpha})`;
             ctx.beginPath();
             ctx.moveTo(px, py);
@@ -119,7 +123,7 @@ export default function DotGridBackground() {
             // Skip the wrap-around connection (when depth jumps from ~0 back to ~1)
             if (Math.abs(nextDepth - depth) < 0.25) {
               const { px: dpx, py: dpy } = nextRowPos[col];
-              const lineAlpha = (t + dt) / 2 * 0.12;
+              const lineAlpha = ((t + dt) / 2) * 0.12;
               ctx.strokeStyle = `rgba(255,255,255,${lineAlpha})`;
               ctx.beginPath();
               ctx.moveTo(px, py);
@@ -138,16 +142,20 @@ export default function DotGridBackground() {
         for (let col = 0; col < COLS; col++) {
           const { t } = project(col, depth);
           const { x: bx, y: by } = project(col, depth);
-          const wave = Math.sin(time * WAVE_SPEED + col * 0.35 + row * 0.55) * WAVE_AMP * t;
+          const wave =
+            Math.sin(time * WAVE_SPEED + col * 0.35 + row * 0.55) *
+            WAVE_AMP *
+            t;
 
           const distX = bx - mx;
-          const distY = (by + wave) - my;
+          const distY = by + wave - my;
           const dist = Math.sqrt(distX * distX + distY * distY);
           let { px, py } = rowPos[col];
           let brightBoost = 0;
 
           if (dist < MOUSE_RADIUS && dist > 0) {
-            const force = (1 - dist / MOUSE_RADIUS) * MOUSE_STRENGTH * (0.3 + t * 0.7);
+            const force =
+              (1 - dist / MOUSE_RADIUS) * MOUSE_STRENGTH * (0.3 + t * 0.7);
             px += (distX / dist) * force;
             py += (distY / dist) * force;
             brightBoost = (1 - dist / MOUSE_RADIUS) * 0.6;

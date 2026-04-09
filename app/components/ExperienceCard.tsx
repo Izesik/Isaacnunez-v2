@@ -10,7 +10,7 @@ export default function ExperienceCard({
   url,
 }: Experience) {
   return (
-    <li className="group border border-zinc-100 dark:border-zinc-800 rounded-lg p-5 flex flex-col gap-3 transition-shadow hover:shadow-md dark:hover:shadow-zinc-900">
+    <li className="group border border-zinc-100 dark:border-zinc-800 rounded-lg p-5 flex flex-col gap-3 transition-shadow hover:shadow-md dark:hover:shadow-zinc-900 bg-white/85 dark:bg-black/85">
       <div className="flex items-start justify-between gap-4">
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2">
@@ -47,7 +47,10 @@ export default function ExperienceCard({
         <div className="overflow-hidden">
           <ul className="flex flex-col gap-1.5 pt-2 border-t border-zinc-100 dark:border-zinc-800">
             {details.map((point, i) => (
-              <li key={i} className="flex gap-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <li
+                key={i}
+                className="flex gap-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400"
+              >
                 <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400 dark:bg-zinc-500" />
                 {point}
               </li>
