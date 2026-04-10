@@ -8,6 +8,7 @@ export type Project = {
   url?: string;
   github?: string;
   status?: string;
+  year?: number;
 };
 
 const projects: Project[] = [
@@ -25,6 +26,7 @@ const projects: Project[] = [
     url: "https://gamecache.example.com",
     github: "https://github.com/IsaacN/gamecache",
     status: "Launching May 2026",
+    year: 2026,
   },
   {
     name: "Marvel Trackr",
@@ -39,6 +41,7 @@ const projects: Project[] = [
     url: "https://marveltrackr.example.com",
     github: "https://github.com/IsaacN/marveltrackr",
     status: "In Development",
+    year: 2026,
   },
   {
     name: "LunaLog",
@@ -61,6 +64,7 @@ const projects: Project[] = [
     url: "https://lunalog.example.com",
     github: "https://github.com/IsaacN/lunalog",
     status: "Completed",
+    year: 2025,
   },
   {
     name: "Personal Website V1",
@@ -75,6 +79,7 @@ const projects: Project[] = [
     url: "https://v1.isaacnunez.com",
     github: "https://github.com/IsaacN/personalwebsitev1",
     status: "Completed",
+    year: 2024,
   },
   {
     name: "Genshin Codes Discord Bot",
@@ -89,6 +94,7 @@ const projects: Project[] = [
     url: "https://genshincodes.example.com",
     github: "https://github.com/IsaacN/genshincodes",
     status: "Completed",
+    year: 2024,
   },
   {
     name: "C.H.A.I.R.S Demo",
@@ -104,6 +110,7 @@ const projects: Project[] = [
     url: "",
     github: "",
     status: "Completed",
+    year: 2024,
   },
   {
     name: "EAHS Guidance Mobile App",
@@ -119,6 +126,7 @@ const projects: Project[] = [
     url: "",
     github: "https://github.com/IsaacN/eahsguidance",
     status: "Canceled",
+    year: 2020,
   },
   {
     name: "The Adventures of Jack",
@@ -134,6 +142,7 @@ const projects: Project[] = [
     url: "https://gamejolt.com",
     github: "",
     status: "Completed",
+    year: 2015,
   },
 ];
 

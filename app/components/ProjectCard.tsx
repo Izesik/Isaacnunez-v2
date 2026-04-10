@@ -21,6 +21,7 @@ export default function ProjectCard({
   url,
   github,
   status,
+  year,
   expanded = false,
 }: Project & { expanded?: boolean }) {
   return (
@@ -50,6 +51,11 @@ export default function ProjectCard({
               {status && (
                 <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${statusStyle(status)}`}>
                   {status}
+                </span>
+              )}
+              {year && (
+                <span className="text-xs text-zinc-400 dark:text-zinc-500">
+                  {year}
                 </span>
               )}
             </div>
