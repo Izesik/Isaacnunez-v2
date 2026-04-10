@@ -91,9 +91,7 @@ export default function Home() {
               ))}
             </ul>
             <Link
-              href="/files/IN_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/Resume"
               className="text-sm font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 hover:text-zinc-200 transition-colors"
             >
               View Full Resume

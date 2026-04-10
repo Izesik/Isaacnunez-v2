@@ -8,7 +8,8 @@ export default function ExperienceCard({
   details,
   tech,
   url,
-}: Experience) {
+  expanded = false,
+}: Experience & { expanded?: boolean }) {
   return (
     <li className="group border border-zinc-100 dark:border-zinc-800 rounded-lg p-5 flex flex-col gap-3 transition-shadow hover:shadow-md dark:hover:shadow-zinc-900 bg-white/85 dark:bg-black/85">
       <div className="flex items-start justify-between gap-4">
@@ -42,9 +43,9 @@ export default function ExperienceCard({
         </span>
       </div>
 
-      {/* Expanded details — revealed on hover */}
-      <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out">
-        <div className="overflow-hidden">
+      {/* Expanded details — always visible when expanded, hover-reveal otherwise */}
+      <div className={expanded ? "" : "grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out"}>
+        <div className={expanded ? "" : "overflow-hidden"}>
           <ul className="flex flex-col gap-1.5 pt-2 border-t border-zinc-100 dark:border-zinc-800">
             {details.map((point, i) => (
               <li

@@ -2,14 +2,18 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const sections = [
+const defaultSections = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
 ];
 
-export default function SideNav() {
-  const [active, setActive] = useState<string>("about");
+export default function SideNav({
+  sections = defaultSections,
+}: {
+  sections?: { id: string; label: string }[];
+}) {
+  const [active, setActive] = useState<string>(sections[0]?.id ?? "");
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
