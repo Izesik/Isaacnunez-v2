@@ -23,6 +23,19 @@ const experience: Experience[] = [
     tech: ["Python", "PowerShell", "SQL", "Logic Apps", "Microsoft Teams"],
     url: "https://www.pny.com",
   },
+  {
+    company: "Moravian University Computing Club (MUCC)",
+    role: "Secretary",
+    period: "2026 — Present",
+    description:
+      "Serving on the executive board of the university computing club, coordinating operations and keeping the membership connected.",
+    details: [
+      "Manage scheduling for club meetings and events, coordinating across e-board members to keep the club running smoothly.",
+      "Draft and distribute announcements to the membership covering upcoming events, opportunities, and club updates.",
+      "Collaborate closely with the executive board to foster an active computing community on campus.",
+    ],
+    tech: ["Scheduling", "Communications", "Team Coordination"],
+  },
 ];
 
 export default experience;

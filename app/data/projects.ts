@@ -67,6 +67,20 @@ const projects: Project[] = [
     year: 2025,
   },
   {
+    name: "Trivia Discord Bot",
+    description:
+      "A multiplayer trivia game bot built with a delivery-agnostic architecture, then taken through a full DevOps pipeline as a team across two courses.",
+    details: [
+      "Designed the core game logic as a standalone module fully decoupled from Discord — any delivery mechanism (CLI, web app) can plug in without touching the game layer.",
+      "Used Redis to manage real-time game state, player scores, and question storage across concurrent trivia sessions.",
+      "Deployed to AWS EC2 with a GitHub Actions CI/CD pipeline that runs the full test suite on every push before promoting to the live instance.",
+      "Collaborated with a team using Git branching workflows to coordinate the DevOps phase of the project.",
+    ],
+    tech: ["Java", "JDA", "Redis", "AWS EC2", "GitHub Actions"],
+    status: "In Development",
+    year: 2026,
+  },
+  {
     name: "Personal Website V1",
     description:
       "My first personal website built to showcase projects and experience.",

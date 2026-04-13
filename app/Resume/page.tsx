@@ -21,6 +21,7 @@ const skills = [
       { name: "TypeScript", highlight: true },
       { name: "JavaScript", highlight: true },
       { name: "Python", highlight: true },
+      { name: "Java", highlight: false },
       { name: "C#", highlight: false },
       { name: "PowerShell", highlight: false },
       { name: "SQL", highlight: true },
@@ -38,6 +39,7 @@ const skills = [
       { name: "Flask", highlight: false },
       { name: "Tailwind CSS", highlight: false },
       { name: "Discord.js", highlight: false },
+      { name: "JDA", highlight: false },
     ],
   },
   {
@@ -45,6 +47,9 @@ const skills = [
     items: [
       { name: "Firebase", highlight: true },
       { name: "MongoDB", highlight: true },
+      { name: "Redis", highlight: false },
+      { name: "AWS EC2", highlight: false },
+      { name: "GitHub Actions", highlight: false },
       { name: "SQLite", highlight: false },
       { name: "Unity", highlight: false },
       { name: "Logic Apps", highlight: false },

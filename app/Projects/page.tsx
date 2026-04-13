@@ -1,6 +1,6 @@
 import { ViewTransition } from "react";
 import Link from "next/link";
-import ProjectCard from "../components/ProjectCard";
+import ProjectsGrid from "../components/ProjectsGrid";
 import projects from "../data/projects";
 
 export default function Projects() {
@@ -40,11 +40,7 @@ export default function Projects() {
             </p>
           </div>
 
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
-            {projects.map((project) => (
-              <ProjectCard key={project.name} {...project} expanded />
-            ))}
-          </ul>
+          <ProjectsGrid projects={projects} />
         </main>
       </div>
     </ViewTransition>
