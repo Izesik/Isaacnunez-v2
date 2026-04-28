@@ -101,9 +101,12 @@ export default function Home() {
               Projects
             </h2>
             <ul className="flex flex-col gap-4">
-              {projects.slice(0, 3).map((project) => (
-                <ProjectCard key={project.name} {...project} />
-              ))}
+              {projects
+                .filter((project) => project.featured)
+                .slice(0, 3)
+                .map((project) => (
+                  <ProjectCard key={project.name} {...project} />
+                ))}
             </ul>
             <Link
               href="/Projects"

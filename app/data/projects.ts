@@ -9,6 +9,7 @@ export type Project = {
   github?: string;
   status?: string;
   year?: number;
+  featured?: boolean;
 };
 
 const projects: Project[] = [
@@ -27,6 +28,7 @@ const projects: Project[] = [
     github: "https://github.com/IsaacN/gamecache",
     status: "Launching May 2026",
     year: 2026,
+    featured: true,
   },
   {
     name: "Marvel Trackr",
@@ -42,6 +44,39 @@ const projects: Project[] = [
     github: "https://github.com/IsaacN/marveltrackr",
     status: "In Development",
     year: 2026,
+    featured: true,
+  },
+  {
+    name: "ComicShelf",
+    description:
+      "A cross-platform comic book reading list app built with Kotlin Multiplatform for a Mobile App Development course.",
+    details: [
+      "Designed and implemented a Kotlin Multiplatform app with shared business logic and native UI layers for Android and iOS.",
+      "Used Room Database for robust offline storage of comic book data and user progress.",
+      "Integrated the ComicVine API to enrich the user experience with detailed metadata and cover art for tracked comics.",
+    ],
+    tech: ["Kotlin Multiplatform", "Room Database", "ComicVine API", "Ktor"],
+    image: "/projects/ComicShelf.webp",
+    url: "",
+    github: "https://github.com/Izesik/CS395-ComicTracker",
+    status: "In Development",
+    year: 2026,
+    featured: false,
+  },
+  {
+    name: "Trivia Discord Bot",
+    description:
+      "A multiplayer trivia game bot built with a delivery-agnostic architecture, then taken through a full DevOps pipeline as a team across two courses.",
+    details: [
+      "Designed the core game logic as a standalone module fully decoupled from Discord — any delivery mechanism (CLI, web app) can plug in without touching the game layer.",
+      "Used Redis to manage real-time game state, player scores, and question storage across concurrent trivia sessions.",
+      "Deployed to AWS EC2 with a GitHub Actions CI/CD pipeline that runs the full test suite on every push before promoting to the live instance.",
+      "Collaborated with a team using Git branching workflows to coordinate the DevOps phase of the project.",
+    ],
+    tech: ["Java", "JDA", "Redis", "AWS EC2", "GitHub Actions"],
+    status: "In Development",
+    year: 2026,
+    featured: false,
   },
   {
     name: "LunaLog",
@@ -65,20 +100,7 @@ const projects: Project[] = [
     github: "https://github.com/KaiserKiam/Lunalog-Hackathon-2025",
     status: "Completed",
     year: 2025,
-  },
-  {
-    name: "Trivia Discord Bot",
-    description:
-      "A multiplayer trivia game bot built with a delivery-agnostic architecture, then taken through a full DevOps pipeline as a team across two courses.",
-    details: [
-      "Designed the core game logic as a standalone module fully decoupled from Discord — any delivery mechanism (CLI, web app) can plug in without touching the game layer.",
-      "Used Redis to manage real-time game state, player scores, and question storage across concurrent trivia sessions.",
-      "Deployed to AWS EC2 with a GitHub Actions CI/CD pipeline that runs the full test suite on every push before promoting to the live instance.",
-      "Collaborated with a team using Git branching workflows to coordinate the DevOps phase of the project.",
-    ],
-    tech: ["Java", "JDA", "Redis", "AWS EC2", "GitHub Actions"],
-    status: "In Development",
-    year: 2026,
+    featured: true,
   },
   {
     name: "Personal Website V1",
@@ -94,6 +116,7 @@ const projects: Project[] = [
     github: "https://github.com/IsaacN/personalwebsitev1",
     status: "Completed",
     year: 2024,
+    featured: false,
   },
   {
     name: "Genshin Codes Discord Bot",
@@ -109,6 +132,7 @@ const projects: Project[] = [
     github: "https://github.com/IsaacN/genshincodes",
     status: "Completed",
     year: 2024,
+    featured: false,
   },
   {
     name: "C.H.A.I.R.S Demo",
@@ -125,6 +149,7 @@ const projects: Project[] = [
     github: "",
     status: "Completed",
     year: 2024,
+    featured: false,
   },
   {
     name: "EAHS Guidance Mobile App",
@@ -141,6 +166,7 @@ const projects: Project[] = [
     github: "https://github.com/IsaacN/eahsguidance",
     status: "Canceled",
     year: 2020,
+    featured: false,
   },
   {
     name: "The Adventures of Jack",
@@ -157,6 +183,7 @@ const projects: Project[] = [
     github: "",
     status: "Completed",
     year: 2015,
+    featured: false,
   },
 ];
 
