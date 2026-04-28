@@ -35,6 +35,8 @@ export default function EducationCard() {
           "Data Wrangling",
           "Mobile App Development",
           "Software Engineering",
+          "Cloud Computing",
+          "Machine Learning",
         ].map((course) => (
           <span
             key={course}

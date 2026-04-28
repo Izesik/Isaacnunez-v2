@@ -20,7 +20,7 @@ export default function DotGridBackground() {
     const MOUSE_STRENGTH = 36;
     const WAVE_SPEED = 0.55;
     const WAVE_AMP = 10;
-    const SCROLL_SPEED = 0.02; // depth cycles per second — dots flow toward the horizon
+    const SCROLL_SPEED = 0.005; // depth cycles per second — dots flow toward the horizon
 
     let width = 0;
     let height = 0;

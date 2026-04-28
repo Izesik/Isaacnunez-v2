@@ -4,6 +4,8 @@ import SocialLinks from "./components/SocialLinks";
 import ProjectCard from "./components/ProjectCard";
 import ExperienceCard from "./components/ExperienceCard";
 import SideNav from "./components/SideNav";
+import RotatingHeadline from "./components/RotatingHeadline";
+import FadeIn from "./components/FadeIn";
 import projects from "./data/projects";
 import experience from "./data/experience";
 
@@ -17,13 +19,11 @@ export default function Home() {
             <h1 className="text-3xl font-semibold text-black dark:text-zinc-50">
               Isaac Nuñez
             </h1>
-            <p className="text-base text-zinc-500 dark:text-zinc-400">
-              Software Engineer
-            </p>
+            <RotatingHeadline />
             <SocialLinks />
           </div>
 
-          <div id="about" className="flex flex-col gap-3">
+          <FadeIn id="about" className="flex flex-col gap-3">
             <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
               About
             </h2>
@@ -74,9 +74,9 @@ export default function Home() {
               </strong>
               .
             </p>
-          </div>
+          </FadeIn>
 
-          <div id="experience" className="flex flex-col gap-6">
+          <FadeIn id="experience" className="flex flex-col gap-6">
             <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
               Experience
             </h2>
@@ -94,9 +94,9 @@ export default function Home() {
             >
               View Full Resume
             </Link>
-          </div>
+          </FadeIn>
 
-          <div id="projects" className="flex flex-col gap-6">
+          <FadeIn id="projects" className="flex flex-col gap-6">
             <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
               Projects
             </h2>
@@ -114,9 +114,9 @@ export default function Home() {
             >
               View Project Library
             </Link>
-          </div>
+          </FadeIn>
 
-          <div id="contact" className="flex flex-col gap-6">
+          <FadeIn id="contact" className="flex flex-col gap-6">
             <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
               Contact
             </h2>
@@ -162,7 +162,7 @@ export default function Home() {
               </span>
             </div>
             <SocialLinks />
-          </div>
+          </FadeIn>
         </main>
 
         <footer className="w-full max-w-3xl mx-auto px-16 py-8 text-xs font-medium text-zinc-500 dark:text-zinc-600 leading-relaxed">

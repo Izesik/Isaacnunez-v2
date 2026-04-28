@@ -27,6 +27,7 @@ const skills = [
       { name: "SQL", highlight: true },
       { name: "HTML", highlight: false },
       { name: "CSS", highlight: false },
+      { name: "Kotlin", highlight: false },
     ],
   },
   {
@@ -65,7 +66,6 @@ export default function Resume() {
       <div className="flex flex-col flex-1 items-center font-sans">
         <SideNav sections={resumeSections} />
         <main className="flex flex-1 w-full max-w-3xl flex-col gap-12 pt-16 pb-32 px-16">
-
           {/* Back + Download */}
           <div className="flex items-center justify-between">
             <Link
@@ -192,7 +192,6 @@ export default function Resume() {
               View Project Library
             </Link>
           </div>
-
         </main>
       </div>
     </ViewTransition>
