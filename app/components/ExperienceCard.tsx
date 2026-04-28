@@ -1,4 +1,5 @@
 import type { Experience } from "../data/experience";
+import TechBadge from "./TechBadge";
 
 export default function ExperienceCard({
   company,
@@ -59,12 +60,7 @@ export default function ExperienceCard({
           </ul>
           <div className="flex flex-wrap gap-2 pt-3">
             {tech.map((t) => (
-              <span
-                key={t}
-                className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
-              >
-                {t}
-              </span>
+              <TechBadge key={t} name={t} />
             ))}
           </div>
         </div>
