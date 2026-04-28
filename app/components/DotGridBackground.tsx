@@ -26,8 +26,8 @@ export default function DotGridBackground() {
     let height = 0;
 
     function resize() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      width = canvas!.width = window.innerWidth;
+      height = canvas!.height = window.innerHeight;
     }
 
     // Projects a column and animated depth value to screen coordinates.
