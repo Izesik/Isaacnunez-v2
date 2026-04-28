@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Project } from "../data/projects";
 import TechBadge from "./TechBadge";
 
@@ -23,6 +24,7 @@ export default function ProjectCard({
   github,
   status,
   year,
+  caseStudy,
   expanded = false,
 }: Project & { expanded?: boolean }) {
   return (
@@ -110,10 +112,23 @@ export default function ProjectCard({
                 </li>
               ))}
             </ul>
-            <div className="flex flex-wrap gap-2 pt-3">
-              {tech.map((t) => (
-                <TechBadge key={t} name={t} />
-              ))}
+            <div className="flex items-center justify-between gap-4 pt-3 flex-wrap">
+              <div className="flex flex-wrap gap-2">
+                {tech.map((t) => (
+                  <TechBadge key={t} name={t} />
+                ))}
+              </div>
+              {caseStudy && (
+                <Link
+                  href={caseStudy}
+                  className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-zinc-50 transition-colors shrink-0 flex items-center gap-1"
+                >
+                  Case Study
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              )}
             </div>
           </div>
         </div>

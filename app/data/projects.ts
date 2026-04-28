@@ -10,6 +10,7 @@ export type Project = {
   status?: string;
   year?: number;
   featured?: boolean;
+  caseStudy?: string;
 };
 
 const projects: Project[] = [
@@ -29,6 +30,7 @@ const projects: Project[] = [
     status: "Launching May 2026",
     year: 2026,
     featured: true,
+    caseStudy: "/Projects/gamecache",
   },
   {
     name: "Marvel Trackr",

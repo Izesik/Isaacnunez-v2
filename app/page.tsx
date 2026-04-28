@@ -6,6 +6,7 @@ import ExperienceCard from "./components/ExperienceCard";
 import SideNav from "./components/SideNav";
 import RotatingHeadline from "./components/RotatingHeadline";
 import FadeIn from "./components/FadeIn";
+import SkillsSection from "./components/SkillsSection";
 import projects from "./data/projects";
 import experience from "./data/experience";
 
@@ -20,6 +21,19 @@ export default function Home() {
               Isaac Nuñez
             </h1>
             <RotatingHeadline />
+            <div className="flex items-center gap-2 text-sm">
+              <span className="relative flex h-2 w-2 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+              </span>
+              <span className="text-zinc-500 dark:text-zinc-400">
+                Building{" "}
+                <Link href="/Projects/gamecache" className="font-semibold text-black dark:text-zinc-100 hover:underline underline-offset-2">
+                  GameCache
+                </Link>
+                {" "}— launching May 2026
+              </span>
+            </div>
             <SocialLinks />
           </div>
 
@@ -74,6 +88,13 @@ export default function Home() {
               </strong>
               .
             </p>
+          </FadeIn>
+
+          <FadeIn id="skills" className="flex flex-col gap-6">
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+              Skills
+            </h2>
+            <SkillsSection />
           </FadeIn>
 
           <FadeIn id="experience" className="flex flex-col gap-6">
