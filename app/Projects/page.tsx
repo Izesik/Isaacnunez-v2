@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
 import { ViewTransition } from "react";
 import Link from "next/link";
 import ProjectsGrid from "../components/ProjectsGrid";
 import projects from "../data/projects";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "Everything Isaac Nuñez has built — games, apps, tools, and experiments.",
+  openGraph: {
+    title: "Projects | Isaac Nuñez",
+    description: "Everything Isaac Nuñez has built — games, apps, tools, and experiments.",
+  },
+};
 
 export default function Projects() {
   return (

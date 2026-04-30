@@ -1,6 +1,18 @@
+import type { Metadata } from "next";
 import { ViewTransition } from "react";
 import Link from "next/link";
 import TechBadge from "../../components/TechBadge";
+
+export const metadata: Metadata = {
+  title: "GameCache",
+  description:
+    "Case study: GameCache — a cross-platform mobile app for tracking, reviewing, and discovering video games. Co-founded as GameCache LLC, launching May 2026.",
+  openGraph: {
+    title: "GameCache | Isaac Nuñez",
+    description:
+      "Case study: GameCache — a cross-platform mobile app for tracking, reviewing, and discovering video games. Co-founded as GameCache LLC, launching May 2026.",
+  },
+};
 
 const TECH = [
   "React Native",

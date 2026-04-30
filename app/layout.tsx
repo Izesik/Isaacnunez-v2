@@ -15,9 +15,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Isaac Nunez",
+  title: {
+    default: "Isaac Nuñez",
+    template: "%s | Isaac Nuñez",
+  },
   description:
-    "Personal portfolio website of Isaac Nunez showcasing projects and experience",
+    "Software engineer and CS student building GameCache, full-stack apps, and automation tools.",
+  metadataBase: new URL("https://isaacnunez.com"),
+  openGraph: {
+    title: "Isaac Nuñez",
+    description:
+      "Software engineer and CS student building GameCache, full-stack apps, and automation tools.",
+    url: "https://isaacnunez.com",
+    siteName: "Isaac Nuñez",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary",
+    title: "Isaac Nuñez",
+    description:
+      "Software engineer and CS student building GameCache, full-stack apps, and automation tools.",
+    creator: "@izesik",
+  },
 };
 
 export default function RootLayout({

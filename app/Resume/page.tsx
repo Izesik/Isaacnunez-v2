@@ -1,6 +1,16 @@
+import type { Metadata } from "next";
 import { ViewTransition } from "react";
 import Link from "next/link";
 import ExperienceCard from "../components/ExperienceCard";
+
+export const metadata: Metadata = {
+  title: "Resume",
+  description: "Isaac Nuñez's resume — experience, education, skills, and projects.",
+  openGraph: {
+    title: "Resume | Isaac Nuñez",
+    description: "Isaac Nuñez's resume — experience, education, skills, and projects.",
+  },
+};
 import EducationCard from "../components/EducationCard";
 import ProjectCard from "../components/ProjectCard";
 import SideNav from "../components/SideNav";
