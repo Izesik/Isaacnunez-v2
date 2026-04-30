@@ -45,8 +45,8 @@ export default function ExperienceCard({
       </div>
 
       {/* Expanded details — always visible when expanded, hover-reveal otherwise */}
-      <div className={expanded ? "" : "grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out"}>
-        <div className={expanded ? "" : "overflow-hidden"}>
+      <div className={expanded ? "" : "grid sm:grid-rows-[0fr] sm:group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out"}>
+        <div className={expanded ? "" : "sm:overflow-hidden"}>
           <ul className="flex flex-col gap-1.5 pt-2 border-t border-zinc-100 dark:border-zinc-800">
             {details.map((point, i) => (
               <li

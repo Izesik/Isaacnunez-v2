@@ -7,7 +7,7 @@ export default function Projects() {
   return (
     <ViewTransition>
       <div className="flex flex-col flex-1 items-center font-sans">
-        <main className="flex flex-1 w-full max-w-5xl flex-col gap-12 pt-16 pb-32 px-16">
+        <main className="flex flex-1 w-full max-w-5xl flex-col gap-12 pt-12 pb-20 px-5 sm:pt-16 sm:pb-32 sm:px-16">
           <Link
             href="/"
             className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 hover:text-zinc-200 transition-colors"

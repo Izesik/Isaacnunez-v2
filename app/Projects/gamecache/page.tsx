@@ -71,7 +71,7 @@ export default function GameCacheCaseStudy() {
   return (
     <ViewTransition>
       <div className="flex flex-col flex-1 items-center font-sans">
-        <main className="flex flex-1 w-full max-w-3xl flex-col gap-16 pt-16 pb-32 px-16">
+        <main className="flex flex-1 w-full max-w-3xl flex-col gap-16 pt-12 pb-20 px-5 sm:pt-16 sm:pb-32 sm:px-16">
           {/* Back nav */}
           <Link
             href="/"

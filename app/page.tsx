@@ -15,7 +15,7 @@ export default function Home() {
     <ViewTransition>
       <div className="flex flex-col flex-1 items-center justify-center font-sans">
         <SideNav />
-        <main className="flex flex-1 w-full max-w-3xl flex-col gap-16 py-32 px-16 sm:items-start">
+        <main className="flex flex-1 w-full max-w-3xl flex-col gap-16 py-20 px-5 sm:py-32 sm:px-16 sm:items-start">
           <div className="flex flex-col gap-3">
             <h1 className="text-3xl font-semibold text-black dark:text-zinc-50">
               Isaac Nuñez
@@ -186,7 +186,7 @@ export default function Home() {
           </FadeIn>
         </main>
 
-        <footer className="w-full max-w-3xl mx-auto px-16 py-8 text-xs font-medium text-zinc-500 dark:text-zinc-600 leading-relaxed">
+        <footer className="w-full max-w-3xl mx-auto px-5 sm:px-16 py-8 text-xs font-medium text-zinc-500 dark:text-zinc-600 leading-relaxed">
           Coded in{" "}
           <a
             href="https://code.visualstudio.com/"
